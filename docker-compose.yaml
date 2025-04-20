@@ -1,0 +1,19 @@
+networks:
+  hotel_booking_app:
+
+volumes:
+  hotel_booking_app_data: {}
+
+services:
+  db:
+    image: postgres:17
+    networks:
+      hotel_booking_app:
+    volumes:
+      - hotel_booking_app_data:/var/lib/postgres/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: hotel_booking_app
